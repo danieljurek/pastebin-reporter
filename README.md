@@ -1,28 +1,12 @@
-== README
+# pastebin-reporter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+* Rails 
+* MySQL (configured with utf8_unicode_ci as per comments http://dev.mysql.com/doc/refman/5.0/en/charset-server.htm)
 
-Things you may want to cover:
+## Installation 
+* `rake db:setup` 
+* `foreman start`
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## What's next? 
+More stuff. 
