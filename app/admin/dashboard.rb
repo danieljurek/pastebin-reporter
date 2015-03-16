@@ -6,19 +6,19 @@ ActiveAdmin.register_page "Dashboard" do
     columns do 
         column do 
             panel "Total Pastes" do 
-                h1 Paste.count 
+                h1 number_with_delimiter(Paste.count)
             end
         end
 
         column do 
             panel "New in the last hour" do 
-                h1 Paste.where("created_at >= ?", 1.hour.ago).count
+                h1 number_with_delimiter(Paste.where("created_at >= ?", 1.hour.ago).count)
             end
         end
 
         column do 
             panel "New in the last 24 hours" do 
-                h1 Paste.where("created_at >= ?", 24.hour.ago).count
+                h1 number_with_delimiter(Paste.where("created_at >= ?", 24.hour.ago).count)
             end
         end 
     end
@@ -26,7 +26,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
         column do 
             panel "Words Indexed" do 
-                h1 Word.count 
+               h1 number_with_delimiter(Word.count) 
             end
         end
         column do 
