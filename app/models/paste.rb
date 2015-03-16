@@ -1,3 +1,4 @@
 class Paste < ActiveRecord::Base
-	has_and_belongs_to_many :words
+	include WordStatsCalculatable
+	belongs_to :words_pastes
 end

@@ -23,6 +23,20 @@ ActiveAdmin.register_page "Dashboard" do
         end 
     end
 
+    columns do
+        column do 
+            panel "Words Indexed" do 
+                h1 Word.count 
+            end
+        end
+        column do 
+
+        end
+        column do 
+
+        end
+    end
+
     # columns do 
     #     column do 
     #         panel "Most Popular Words in the last 24 hours" do 

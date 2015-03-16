@@ -1,3 +1,7 @@
 class Word < ActiveRecord::Base
-	has_and_belongs_to_many :pastes
+	belongs_to :words_pastes
+
+	def self.get(word) 
+		Word.find_or_create_by(value: word.downcase) 
+	end
 end

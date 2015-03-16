@@ -10,6 +10,17 @@ ActiveAdmin.register Paste do
     actions
   end
 
+  show do 
+    attributes_table do
+      row :pastebin_id 
+      row :contents do |item| 
+        pre item.contents, style: 'white-space: pre-wrap; font-face: monospace' 
+      end
+      row :created_at
+    end
+    active_admin_comments
+  end
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

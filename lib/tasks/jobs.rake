@@ -14,7 +14,7 @@ namespace :jobs do
   		end
 
   		puts 'Sleeping...' 
-  		sleep(20) 
+  		sleep(30) 
   	end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315062302) do
+ActiveRecord::Schema.define(version: 20150316032244) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -46,6 +46,22 @@ ActiveRecord::Schema.define(version: 20150315062302) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   limit: 4,        default: 0, null: false
+    t.integer  "attempts",   limit: 4,        default: 0, null: false
+    t.text     "handler",    limit: 16777215,             null: false
+    t.text     "last_error", limit: 65535
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by",  limit: 255
+    t.string   "queue",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
   create_table "pastes", force: :cascade do |t|
     t.string   "pastebin_id", limit: 255
     t.text     "contents",    limit: 16777215
@@ -61,9 +77,12 @@ ActiveRecord::Schema.define(version: 20150315062302) do
     t.datetime "updated_at",             null: false
   end
 
+  add_index "words", ["value"], name: "index_words_on_value", unique: true, using: :btree
+
   create_table "words_pastes", force: :cascade do |t|
-    t.integer "word_id",  limit: 4
-    t.integer "paste_id", limit: 4
+    t.integer "word_id",   limit: 4
+    t.integer "paste_id",  limit: 4
+    t.integer "frequency", limit: 4
   end
 
   add_index "words_pastes", ["paste_id"], name: "index_words_pastes_on_paste_id", using: :btree
